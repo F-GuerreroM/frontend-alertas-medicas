@@ -1,28 +1,71 @@
-<div style="text-align: center; margin-top: 50px; font-family: Arial, sans-serif; background-color: #f4f7f6; padding: 40px; border-radius: 10px; max-width: 600px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  
-  <h1 style="color: #2c3e50;">🏥 Sistema de Alertas Médicas</h1>
-  <p style="color: #7f8c8d;">Hospital San Antonio - Acceso Restringido</p>
-  
-  <hr style="border-top: 1px solid #bdc3c7; margin: 20px 0;">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div class="login-container">
 
-  <div *ngIf="!loginDisplay">
-    <p>Por favor, inicie sesión con sus credenciales médicas para continuar.</p>
-   <button (click)="login()" 
-        onclick="this.disabled=true; this.innerText='Abriendo ventana segura...';"
-        style="background-color: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 5px; font-size: 16px; cursor: pointer; transition: background-color 0.3s;">
-  Iniciar Sesión
-</button>
-  </div>
+  <div class="login-card">
 
-  <div *ngIf="loginDisplay">
-    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
-      <h2 style="color: #27ae60; margin: 0;">¡Bienvenido, Doc!</h2>
-      <button (click)="logout()" style="background-color: #e74c3c; color: white; padding: 8px 15px; border: none; border-radius: 5px; cursor: pointer; font-weight: bold;">
-        Cerrar Sesión
-      </button>
+    <div class="header">
+
+      <div class="logo-circle">
+        🏥
+      </div>
+
+      <h1>Sistema de Alertas Médicas</h1>
+
+      <p class="subtitle">
+        Hospital San Antonio
+      </p>
+
     </div>
-    
-    <app-dashboard></app-dashboard>
+
+    <div *ngIf="!loginDisplay" class="login-section">
+
+      <div class="security-badge">
+        🔒 Acceso Seguro para Personal Autorizado
+      </div>
+
+      <p class="description">
+        Inicie sesión con sus credenciales corporativas para acceder al
+        monitoreo y gestión de alertas médicas en tiempo real.
+      </p>
+
+      <button
+        class="btn btn-primary"
+        (click)="login()"
+        onclick="this.disabled=true; this.innerText='Conectando...';">
+
+        Iniciar Sesión
+
+      </button>
+
+    </div>
+
+    <div *ngIf="loginDisplay">
+
+      <div class="user-bar">
+
+        <div>
+          <h2>Bienvenido</h2>
+          <span>Sistema Activo</span>
+        </div>
+
+        <button
+          class="btn btn-danger"
+          (click)="logout()">
+
+          Cerrar Sesión
+
+        </button>
+
+      </div>
+
+      <app-dashboard></app-dashboard>
+
+    </div>
+
+    <footer class="footer">
+      © 2026 Hospital San Antonio | Sistema de Alertas Médicas
+    </footer>
+
   </div>
 
 </div>
