@@ -1,6 +1,5 @@
 <div class="dashboard-layout">
 
-  <!-- SIDEBAR -->
   <aside class="sidebar">
 
     <div class="sidebar-header">
@@ -13,30 +12,24 @@
         class="menu-btn"
         [class.active-blue]="vistaActual === 'pacientes'"
         (click)="cambiarVista('pacientes')">
-
         <span>📋</span>
         Lista de Pacientes
-
       </button>
 
       <button
         class="menu-btn"
         [class.active-red]="vistaActual === 'alertas'"
         (click)="cambiarVista('alertas')">
-
         <span>🚨</span>
         Alertas Médicas
-
       </button>
 
     </nav>
 
   </aside>
 
-  <!-- CONTENIDO -->
   <main class="content">
 
-    <!-- PACIENTES -->
     <div *ngIf="vistaActual === 'pacientes'">
 
       <div class="page-header">
@@ -47,8 +40,8 @@
       <div class="stats-grid">
 
         <div class="stat-card">
-          <h3>0</h3>
-          <span>Pacientes</span>
+          <h3>{{ pacientes.length }}</h3>
+          <span>Pacientes Totales</span>
         </div>
 
         <div class="stat-card">
@@ -73,14 +66,25 @@
               <th>Nombre Completo</th>
               <th>RUT</th>
               <th>Edad</th>
+              <th>Diagnóstico</th>
+              <th>Estado</th>
             </tr>
           </thead>
 
           <tbody>
-            <tr>
-              <td colspan="4" class="empty-state">
-                Esperando integración con Azure APIM...
+            <tr *ngIf="pacientes.length === 0">
+              <td colspan="6" class="empty-state">
+                Esperando integración con Azure APIM o no hay pacientes registrados...
               </td>
+            </tr>
+
+            <tr *ngFor="let p of pacientes">
+              <td>{{ p.idPaciente }}</td>
+              <td>{{ p.nombreCompleto }}</td>
+              <td>{{ p.rut }}</td>
+              <td>{{ p.edad }}</td>
+              <td>{{ p.diagnostico }}</td>
+              <td>{{ p.estado }}</td>
             </tr>
           </tbody>
 
@@ -90,7 +94,6 @@
 
     </div>
 
-    <!-- ALERTAS -->
     <div *ngIf="vistaActual === 'alertas'">
 
       <div class="page-header">

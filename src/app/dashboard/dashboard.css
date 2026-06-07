@@ -1,17 +1,17 @@
-/* =====================================
-   DASHBOARD LAYOUT
-===================================== */
-
 .dashboard-layout {
   display: flex;
-   height: 360px;
-  min-height: 500px;
-
+  
+  /* Corregido: Altura dinámica en lugar de 360px fijos */
+  min-height: 600px;
+  height: 80vh; 
 
   border-radius: 16px;
   overflow: hidden;
 
   background: #ffffff;
+  
+  /* Opcional: Una sombra suave alrededor de todo el panel para que resalte en el fondo */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); 
 }
 
 /* =====================================
@@ -80,15 +80,14 @@
 /* =====================================
    CONTENIDO
 ===================================== */
-
 .content {
   flex: 1;
-
   background: #f8fafc;
-
   padding: 20px;
-
+  
+  /* LA SOLUCIÓN DEFINITIVA: El panel completo ahora se puede deslizar */
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 /* =====================================
@@ -157,16 +156,22 @@
 /* =====================================
    TABLA
 ===================================== */
-
 .table-card {
-  background: white;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 3px 12px rgba(0,0,0,.05); 
+  
+  /* Un poco de espacio extra al final para que no quede pegada al borde cuando bajes */
+  margin-bottom: 20px; 
+}
 
-  border-radius: 14px;
-
-  overflow: hidden;
-
-  box-shadow:
-    0 3px 12px rgba(0,0,0,.05);
+/* El título seguirá quedando pegado arriba cuando bajes con el mouse */
+.table-card thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2; 
+  background-color: #e2e8f0; 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
 }
 
 table {
@@ -174,33 +179,23 @@ table {
   border-collapse: collapse;
 }
 
-thead {
-  background: #e2e8f0;
-}
-
 th {
   padding: 14px;
   text-align: left;
-
   color: #1e293b;
   font-size: 0.9rem;
 }
 
 td {
   padding: 14px;
-
   border-top: 1px solid #e5e7eb;
-
   font-size: 0.9rem;
 }
 
 .empty-state {
   text-align: center;
-
   color: #94a3b8;
-
   font-style: italic;
-
   padding: 30px;
 }
 

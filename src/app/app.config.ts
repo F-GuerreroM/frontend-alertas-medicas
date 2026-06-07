@@ -1,7 +1,7 @@
 import { ApplicationConfig, APP_INITIALIZER } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-
+import { provideHttpClient } from '@angular/common/http';
 // Importaciones de MSAL
 import { MsalService, MSAL_INSTANCE, MsalGuard, MsalBroadcastService, MSAL_GUARD_CONFIG, MsalGuardConfiguration } from '@azure/msal-angular';
 import { IPublicClientApplication, PublicClientApplication, InteractionType } from '@azure/msal-browser';
@@ -46,6 +46,7 @@ export const appConfig: ApplicationConfig = {
     },
     MsalService,
     MsalGuard,
-    MsalBroadcastService
+    MsalBroadcastService,
+    provideHttpClient()
   ]
 };

@@ -65,8 +65,11 @@ body {
   position: relative;
   z-index: 2;
 
-   max-height: 800px;
-  overflow: hidden;
+   max-height: 90vh; 
+  
+  /* 3. ESTA ES LA CLAVE: Que la tarjeta principal genere el scroll */
+  overflow-y: auto !important; 
+  overflow-x: hidden;
 
   padding: 40px;
 
